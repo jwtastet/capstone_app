@@ -42,11 +42,11 @@ class _LoadingState extends State<Loading> {
   }
 
   void checkForDoneLoading() {
-    if (moods.length == 0 || beverageTypes.length == 0) {
+    if (moods.isEmpty || beverageTypes.isEmpty) {
       return;
     }
     print("We made it");
-    Navigator.pushNamed(context, '/home', arguments: {moods, beverageTypes});
+    Navigator.pushNamed(context, '/beverageTypes', arguments: {"moods": moods, "beverage types": beverageTypes});
   }
 
 

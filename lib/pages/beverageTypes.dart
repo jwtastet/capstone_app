@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:capstone_app/classes/Mood.dart';
+import 'package:capstone_app/classes/BeverageType.dart';
 
 class BeverageType extends StatefulWidget {
   @override
   _BeverageTypeState createState() => _BeverageTypeState();
 }
+
 class _BeverageTypeState extends State<BeverageType> {
 
-  List<dynamic> moods = [];
+  Map data;
 
   int moodId = 0;
 
@@ -19,8 +21,8 @@ class _BeverageTypeState extends State<BeverageType> {
   @override
   Widget build(BuildContext context) {
 
-    moods = ModalRoute.of(context).settings.arguments;
-    print(moods);
+    data = ModalRoute.of(context).settings.arguments;
+    print(data);
 
     return Scaffold(
       appBar: AppBar(

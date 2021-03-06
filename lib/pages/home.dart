@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:capstone_app/classes/Mood.dart';
+import "package:capstone_app/classes/BeverageType.dart";
 
 class Home extends StatefulWidget {
   @override
