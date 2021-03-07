@@ -13,6 +13,7 @@ void main() {
         '/': (context) => Loading(),
         '/moods': (context) => Mood(),
         '/beverageTypes': (context) => BeverageType(),
+        '/tastes': (context) => Taste(),
       }
   ));
 }

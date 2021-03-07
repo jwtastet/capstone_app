@@ -7,9 +7,7 @@ class Mood extends StatefulWidget {
 }
 class _MoodState extends State<Mood> {
 
-  List<dynamic> moods = [];
-
-  int moodId = 0;
+  Map data;
 
   @override
   void initState() {
@@ -19,8 +17,8 @@ class _MoodState extends State<Mood> {
   @override
   Widget build(BuildContext context) {
 
-    moods = ModalRoute.of(context).settings.arguments;
-    print(moods);
+    data = ModalRoute.of(context).settings.arguments;
+    print(data);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,30 +28,29 @@ class _MoodState extends State<Mood> {
         elevation: 1,
       ),
       body: ListView.builder(
-          itemCount: moods.length,
+          itemCount: data['tables']['moods'].length,
           itemBuilder: (context, index) {
             return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-                child: Card(
-                    child: ListTile(
-                      onTap: () {
-                        setState(() {
-                          moodId = moods[index].id;
-                        });
-                        Navigator.pushNamed(context, '/tastes', arguments: { moods, moodId });
-                      },
-                      title: Center(
-                        child: Text(
-                          moods[index].name,
-                          ),
-                        ),
-                      ),
+              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+              child: Card(
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      data['selectedIds']['moodId'] = data['tables']['moods'][index].id;
+                    });
+                    print(data);
+                    Navigator.pushNamed(context, '/tastes', arguments: data );
+                  },
+                  title: Center(
+                    child: Text(
+                      data['tables']['moods'][index].name,
+                    ),
+                  ),
                 ),
-               );
+              ),
+            );
           }
       ),
-
     );
-
   }
 }

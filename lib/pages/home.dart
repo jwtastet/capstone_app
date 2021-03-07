@@ -8,7 +8,7 @@ class Home extends StatefulWidget {
 }
 class _HomeState extends State<Home> {
 
-  List<dynamic> moods = [];
+  Map data;
 
   @override
   void initState() {
@@ -18,8 +18,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    moods = ModalRoute.of(context).settings.arguments;
-    print(moods);
+    data = ModalRoute.of(context).settings.arguments;
+    print("data to home page");
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
               fit: BoxFit.fitWidth, // otherwise the logo will be tiny
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/moods', arguments: moods);
+                  Navigator.pushNamed(context, '/beverageTypes', arguments: data);
                 },
                 child: Text('"I am thirsty!"'),
               ),

@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:capstone_app/classes/Beverage.dart';
 import 'package:capstone_app/classes/Mood.dart';
 import 'package:capstone_app/classes/BeverageType.dart';
+import 'package:capstone_app/classes/Prescription.dart';
+import 'package:capstone_app/classes/Taste.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -12,8 +14,10 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-  List<Mood> moods;
-  List<BeverageType> beverageTypes;
+  List<Mood> moods = [];
+  List<BeverageType> beverageTypes = [];
+  List<Prescription> prescriptions = [];
+  List<Taste> tastes = [];
 
   void getMoods() async {
     final response =
@@ -24,7 +28,7 @@ class _LoadingState extends State<Loading> {
       print(moods[0].name);
       checkForDoneLoading();
     } else {
-      throw Exception('Failed to load Beverages');
+      throw Exception('Failed to load Moods');
     }
   }
 
@@ -37,16 +41,42 @@ class _LoadingState extends State<Loading> {
       print(beverageTypes[0].name);
       checkForDoneLoading();
     } else {
-      throw Exception('Failed to load Beverages');
+      throw Exception('Failed to load Beverage Types');
+    }
+  }
+
+  void getPrescriptions() async {
+    final response =
+    await get(Uri.https('pure-taiga-78029.herokuapp.com', 'api/prescriptions'));
+
+    if (response.statusCode == 200) {
+      prescriptions = prescriptionFromJson(response.body);
+      print(prescriptions);
+      checkForDoneLoading();
+    } else {
+      throw Exception('Failed to load Prescriptions');
+    }
+  }
+
+  void getTastes() async {
+    final response =
+    await get(Uri.https('pure-taiga-78029.herokuapp.com', 'api/tastes'));
+
+    if (response.statusCode == 200) {
+      tastes = tasteFromJson(response.body);
+      print(tastes);
+      checkForDoneLoading();
+    } else {
+      throw Exception('Failed to load Tastes');
     }
   }
 
   void checkForDoneLoading() {
-    if (moods.isEmpty || beverageTypes.isEmpty) {
+    if (moods.isEmpty || beverageTypes.isEmpty || prescriptions.isEmpty || tastes.isEmpty) {
       return;
     }
     print("We made it");
-    Navigator.pushNamed(context, '/beverageTypes', arguments: {"moods": moods, "beverage types": beverageTypes});
+    Navigator.pushNamed(context, '/home', arguments: {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes});
   }
 
 
@@ -55,6 +85,8 @@ class _LoadingState extends State<Loading> {
     super.initState();
     getMoods();
     getBeverageTypes();
+    getPrescriptions();
+    getTastes();
   }
 
 

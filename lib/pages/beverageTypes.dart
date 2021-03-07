@@ -10,8 +10,7 @@ class BeverageType extends StatefulWidget {
 class _BeverageTypeState extends State<BeverageType> {
 
   Map data;
-
-  int moodId = 0;
+  Map<String, int> selectedIds = {};
 
   @override
   void initState() {
@@ -27,9 +26,33 @@ class _BeverageTypeState extends State<BeverageType> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: Text("Select the mood you are in."),
+        title: Text("What kind of drink?"),
         centerTitle: true,
         elevation: 1,
+      ),
+      body: ListView.builder(
+          itemCount: data['beverageTypes'].length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+              child: Card(
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      selectedIds['beverageTypeId'] = data['beverageTypes'][index].id;
+                    });
+                    print(data);
+                    Navigator.pushNamed(context, '/moods', arguments: { 'tables': data, 'selectedIds': selectedIds } );
+                  },
+                  title: Center(
+                    child: Text(
+                      data['beverageTypes'][index].name,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }
       ),
     );
   }
