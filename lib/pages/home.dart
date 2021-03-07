@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
               fit: BoxFit.fitWidth, // otherwise the logo will be tiny
               child: ElevatedButton(
                 onPressed: () {
+                  print('lets get started, JT 316');
                   Navigator.pushNamed(context, '/beverageTypes', arguments: data);
                 },
                 child: Text('"I am thirsty!"'),

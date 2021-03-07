@@ -41,6 +41,7 @@ class _BeverageTypeState extends State<BeverageType> {
                     setState(() {
                       selectedIds['beverageTypeId'] = data['beverageTypes'][index].id;
                     });
+                    print('from beverageTypes to moods, JT 316');
                     print(data);
                     Navigator.pushNamed(context, '/moods', arguments: { 'tables': data, 'selectedIds': selectedIds } );
                   },

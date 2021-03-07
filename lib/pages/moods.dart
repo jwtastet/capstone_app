@@ -38,6 +38,7 @@ class _MoodState extends State<Mood> {
                     setState(() {
                       data['selectedIds']['moodId'] = data['tables']['moods'][index].id;
                     });
+                    print('from moods to tastes, JT 316');
                     print(data);
                     Navigator.pushNamed(context, '/tastes', arguments: data );
                   },
