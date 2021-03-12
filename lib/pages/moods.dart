@@ -36,11 +36,30 @@ class _MoodState extends State<Mood> {
                 child: ListTile(
                   onTap: () {
                     setState(() {
-                      data['selectedIds']['moodId'] = data['tables']['moods'][index].id;
+                      data['selectedIds']['moodId'] =
+                          data['tables']['moods'][index].id;
                     });
-                    print('from moods to tastes, JT 316');
-                    print(data);
-                    Navigator.pushNamed(context, '/tastesBeer', arguments: data );
+                    if (data['selectedIds']['beverageTypeId'] == 1) {
+                      print('from moods to tastesBeer, JT 316');
+                      print(data);
+                      Navigator.pushNamed(
+                          context, '/tastesBeer', arguments: data);
+                    } else if (data['selectedIds']['beverageTypeId'] == 2) {
+                      print('from moods to tastesLiquor, JT 316');
+                      print(data);
+                      Navigator.pushNamed(
+                          context, '/tastesLiquor', arguments: data);
+                    } else if (data['selectedIds']['beverageTypeId'] == 3) {
+                      print('from moods to tastesWine, JT 316');
+                      print(data);
+                      Navigator.pushNamed(
+                          context, '/tastesWine', arguments: data);
+                    } else if (data['selectedIds']['beverageTypeId'] == 4) {
+                      print('from moods to tastesNa, JT 316');
+                      print(data);
+                      Navigator.pushNamed(
+                          context, '/tastesNa', arguments: data);
+                    }
                   },
                   title: Center(
                     child: Text(

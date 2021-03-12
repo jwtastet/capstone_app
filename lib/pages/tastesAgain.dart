@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:capstone_app/classes/Mood.dart';
 
-class TasteNa extends StatefulWidget {
+class TasteAgain extends StatefulWidget {
   @override
-  _TasteNaState createState() => _TasteNaState();
+  _TasteAgainState createState() => _TasteAgainState();
 }
-class _TasteNaState extends State<TasteNa> {
+class _TasteAgainState extends State<TasteAgain> {
 
   Map data;
-  List naTastes = [];
+  List liquorTastes = [];
 
   @override
   void initState() {
@@ -20,7 +20,7 @@ class _TasteNaState extends State<TasteNa> {
     data = ModalRoute.of(context).settings.arguments;
     int i = 0;
     while (i < 4) {
-      naTastes.add(data['tables']['tastes'][i]);
+      liquorTastes.add(data['tables']['tastes'][i]);
       i++ ;
     }
     print(data);
@@ -33,7 +33,7 @@ class _TasteNaState extends State<TasteNa> {
         elevation: 1,
       ),
       body: ListView.builder(
-          itemCount: naTastes.length,
+          itemCount: liquorTastes.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
@@ -41,15 +41,15 @@ class _TasteNaState extends State<TasteNa> {
                 child: ListTile(
                   onTap: () {
                     setState(() {
-                      data['selectedIds']['tasteId'] = naTastes[index].id;
+                      data['selectedIds']['tasteAgainId'] = liquorTastes[index].id;
                     });
-                    print('from tastesNa to flavors, JT 316');
+                    print('from tastesAgain to flavors, JT 316');
                     print(data);
-                    Navigator.pushNamed(context, '/flavors', arguments: data );
+                    Navigator.pushNamed(context, '/tastes', arguments: data );
                   },
                   title: Center(
                     child: Text(
-                      naTastes[index].name,
+                      liquorTastes[index].name,
                     ),
                   ),
                 ),

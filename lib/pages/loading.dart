@@ -6,6 +6,8 @@ import 'package:capstone_app/classes/Mood.dart';
 import 'package:capstone_app/classes/BeverageType.dart';
 import 'package:capstone_app/classes/Prescription.dart';
 import 'package:capstone_app/classes/Taste.dart';
+import 'package:capstone_app/classes/Flavor.dart';
+import 'package:capstone_app/classes/TasteFlavor.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -18,6 +20,8 @@ class _LoadingState extends State<Loading> {
   List<BeverageType> beverageTypes = [];
   List<Prescription> prescriptions = [];
   List<Taste> tastes = [];
+  List<Flavor> flavors = [];
+  List<TasteFlavor> tasteFlavors = [];
 
   void getMoods() async {
     final response =
@@ -71,8 +75,34 @@ class _LoadingState extends State<Loading> {
     }
   }
 
+  void getFlavors() async {
+    final response =
+    await get(Uri.https('pure-taiga-78029.herokuapp.com', 'api/flavors'));
+
+    if (response.statusCode == 200) {
+      flavors = flavorFromJson(response.body);
+      print(flavors);
+      checkForDoneLoading();
+    } else {
+      throw Exception('Failed to load Flavors');
+    }
+  }
+
+  void getTasteFlavors() async {
+    final response =
+    await get(Uri.https('pure-taiga-78029.herokuapp.com', 'api/tasteFlavors'));
+
+    if (response.statusCode == 200) {
+      tasteFlavors = tasteFlavorFromJson(response.body);
+      print(tasteFlavors);
+      checkForDoneLoading();
+    } else {
+      throw Exception('Failed to load TasteFlavors');
+    }
+  }
+
   void checkForDoneLoading() {
-    if (moods.isEmpty || beverageTypes.isEmpty || prescriptions.isEmpty || tastes.isEmpty) {
+    if (moods.isEmpty || beverageTypes.isEmpty || prescriptions.isEmpty || tastes.isEmpty || flavors.isEmpty || tasteFlavors.isEmpty) {
       return;
     }
     print("We made it");

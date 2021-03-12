@@ -41,9 +41,9 @@ class _TasteWineState extends State<TasteWine> {
                     setState(() {
                       data['selectedIds']['tasteId'] = wineTastes[index].id;
                     });
-                    print('from moods to tastes, JT 316');
+                    print('from tastesWine to flavors, JT 316');
                     print(data);
-                    Navigator.pushNamed(context, '/tastes', arguments: data );
+                    Navigator.pushNamed(context, '/flavors', arguments: data );
                   },
                   title: Center(
                     child: Text(

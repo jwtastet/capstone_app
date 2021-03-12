@@ -45,7 +45,7 @@ class _TasteBeerState extends State<TasteBeer> {
                     });
                     print('from moods to tastes, JT 316');
                     print(data);
-                    Navigator.pushNamed(context, '/tastes', arguments: data );
+                    Navigator.pushNamed(context, '/flavors', arguments: data );
                   },
                   title: Center(
                     child: Text(
