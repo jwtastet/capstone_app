@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:capstone_app/pages/home.dart';
 import 'package:capstone_app/pages/loading.dart';
 import 'package:capstone_app/pages/moods.dart';
-import 'package:capstone_app/pages/tastes.dart';
+import 'package:capstone_app/pages/tastesBeer.dart';
 import 'package:capstone_app/pages/beverageTypes.dart';
+import 'package:capstone_app/pages/tastesLiquor.dart';
+import 'package:capstone_app/pages/tastesWine.dart';
+import 'package:capstone_app/pages/tastesNa.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,7 +16,11 @@ void main() {
         '/': (context) => Loading(),
         '/moods': (context) => Mood(),
         '/beverageTypes': (context) => BeverageType(),
-        '/tastes': (context) => Taste(),
+        '/tastesBeer': (context) => TasteBeer(),
+        '/tastesLiquor': (context) => TasteLiquor(),
+        '/tastesWine': (context) => TasteWine(),
+        '/tastesNa': (context) => TasteNa(),
+
       }
   ));
 }

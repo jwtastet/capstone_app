@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:capstone_app/classes/Mood.dart';
 
-class Mood extends StatefulWidget {
+class TasteLiquor extends StatefulWidget {
   @override
-  _MoodState createState() => _MoodState();
+  _TasteLiquorState createState() => _TasteLiquorState();
 }
-class _MoodState extends State<Mood> {
+class _TasteLiquorState extends State<TasteLiquor> {
 
   Map data;
+  List liquorTastes = [];
 
   @override
   void initState() {
@@ -16,19 +17,23 @@ class _MoodState extends State<Mood> {
 
   @override
   Widget build(BuildContext context) {
-
     data = ModalRoute.of(context).settings.arguments;
+    int i = 0;
+    while (i < 4) {
+      liquorTastes.add(data['tables']['tastes'][i]);
+      i++ ;
+    }
     print(data);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: Text("Select the mood you are in."),
+        title: Text("Select a taste"),
         centerTitle: true,
         elevation: 1,
       ),
       body: ListView.builder(
-          itemCount: data['tables']['moods'].length,
+          itemCount: liquorTastes.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
@@ -36,15 +41,15 @@ class _MoodState extends State<Mood> {
                 child: ListTile(
                   onTap: () {
                     setState(() {
-                      data['selectedIds']['moodId'] = data['tables']['moods'][index].id;
+                      data['selectedIds']['tasteId'] = liquorTastes[index].id;
                     });
                     print('from moods to tastes, JT 316');
                     print(data);
-                    Navigator.pushNamed(context, '/tastesBeer', arguments: data );
+                    Navigator.pushNamed(context, '/tastes', arguments: data );
                   },
                   title: Center(
                     child: Text(
-                      data['tables']['moods'][index].name,
+                      liquorTastes[index].name,
                     ),
                   ),
                 ),
