@@ -1,3 +1,4 @@
+import 'package:capstone_app/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_app/classes/TasteFlavor.dart';
 import 'package:capstone_app/classes/Beverage.dart';
@@ -33,7 +34,7 @@ class _PrescriptionState extends State<Prescription> {
     }
     i = 0;
     while (i < data['tables']['beverages'].length) {
-      if(data['tables']['beverages'][i] == beverageId) {
+      if(data['tables']['beverages'][i].id == beverageId) {
         theChoice = data['tables']['beverages'][i];
       }
       i++;
@@ -43,7 +44,7 @@ class _PrescriptionState extends State<Prescription> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: Text("Select a taste"),
+        title: Text("You should try this!"),
         centerTitle: true,
         elevation: 1,
       ),
@@ -96,7 +97,25 @@ class _PrescriptionState extends State<Prescription> {
                           fontSize: 16.0,
                         ),
                       ),
-                    )
+                    ),
+                    SingleChildScrollView(
+                      child: Text(
+                        theChoice.ingredients,
+                        style: TextStyle(
+                          color: Colors.grey.withOpacity(0.6),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                    OutlinedButton.icon(
+                        onPressed: () => Navigator.pushNamed(context, '/'),
+                        icon: Icon( Icons.home, color: Colors.lightBlueAccent),
+                        label: Text('Back To Home',
+                          style: TextStyle(
+                            color: Colors.lightBlueAccent
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -107,7 +126,8 @@ class _PrescriptionState extends State<Prescription> {
             left: MediaQuery.of(context).size.width / 5,
             child: Hero(
               tag: theChoice.imageUrl,
-              child: Image.network(theChoice.imageUrl,
+              child: Image.network(
+                theChoice.imageUrl,
                 fit: BoxFit.cover,
                 height: 250.0,
               ),
