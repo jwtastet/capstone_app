@@ -22,6 +22,7 @@ class _LoadingState extends State<Loading> {
   List<Taste> tastes = [];
   List<Flavor> flavors = [];
   List<TasteFlavor> tasteFlavors = [];
+  List<Beverage> beverages = [];
 
   void getMoods() async {
     final response =
@@ -101,12 +102,25 @@ class _LoadingState extends State<Loading> {
     }
   }
 
+  void getBeverages() async {
+    final response =
+    await get(Uri.https('pure-taiga-78029.herokuapp.com', 'api/beverages'));
+
+    if (response.statusCode == 200) {
+      beverages = beverageFromJson(response.body);
+      print(beverages);
+      checkForDoneLoading();
+    } else {
+      throw Exception('Failed to load TasteFlavors');
+    }
+  }
+
   void checkForDoneLoading() {
     if (moods.isEmpty || beverageTypes.isEmpty || prescriptions.isEmpty || tastes.isEmpty || flavors.isEmpty || tasteFlavors.isEmpty) {
       return;
     }
     print("We made it");
-    Navigator.pushNamed(context, '/home', arguments: {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes});
+    Navigator.pushNamed(context, '/home', arguments: {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes, "tasteFlavors": tasteFlavors, "flavors": flavors, "beverages": beverages});
   }
 
 
@@ -117,6 +131,9 @@ class _LoadingState extends State<Loading> {
     getBeverageTypes();
     getPrescriptions();
     getTastes();
+    getFlavors();
+    getTasteFlavors();
+    getBeverages();
   }
 
 

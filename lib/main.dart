@@ -8,6 +8,8 @@ import 'package:capstone_app/pages/tastesLiquor.dart';
 import 'package:capstone_app/pages/tastesWine.dart';
 import 'package:capstone_app/pages/tastesNa.dart';
 import 'package:capstone_app/pages/tastesAgain.dart';
+import 'package:capstone_app/pages/flavors.dart';
+import 'package:capstone_app/pages/prescription.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,6 +24,9 @@ void main() {
         '/tastesWine': (context) => TasteWine(),
         '/tastesNa': (context) => TasteNa(),
         '/tastesAgain': (context) => TasteAgain(),
+        '/flavors': (context) => Flavor(),
+        '/prescription': (context) => Prescription(),
+
 
       }
   ));

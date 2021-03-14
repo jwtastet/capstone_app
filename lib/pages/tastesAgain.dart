@@ -45,7 +45,7 @@ class _TasteAgainState extends State<TasteAgain> {
                     });
                     print('from tastesAgain to flavors, JT 316');
                     print(data);
-                    Navigator.pushNamed(context, '/tastes', arguments: data );
+                    Navigator.pushNamed(context, '/flavors', arguments: data );
                   },
                   title: Center(
                     child: Text(
