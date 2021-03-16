@@ -28,7 +28,7 @@ class _TasteNaState extends State<TasteNa> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: Text("Select a taste"),
+        title: Text("How do you want it to taste?"),
         centerTitle: true,
         elevation: 1,
       ),

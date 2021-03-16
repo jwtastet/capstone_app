@@ -28,7 +28,7 @@ class _TasteBeerState extends State<TasteBeer> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
-          title: Text("Select a taste"),
+          title: Text("How do you want it to taste?"),
           centerTitle: true,
           elevation: 1,
         ),

@@ -44,7 +44,8 @@ class _HomeState extends State<Home> {
                   print('lets get started, JT 316');
                   Navigator.pushNamed(context, '/beverageTypes', arguments: data);
                 },
-                child: Text('"I am thirsty!"'),
+                child: Text('"I am Thirsty!"'),
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlueAccent)),
               ),
             ),
           ),
