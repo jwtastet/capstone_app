@@ -31,11 +31,13 @@ class _BeverageTypeState extends State<BeverageType> {
         elevation: 1,
       ),
       body: ListView.builder(
+        shrinkWrap: true,
           itemCount: data['beverageTypes'].length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
+                color: Colors.lightBlueAccent,
                 child: ListTile(
                   onTap: () {
                     setState(() {
@@ -47,7 +49,12 @@ class _BeverageTypeState extends State<BeverageType> {
                   },
                   title: Center(
                     child: Text(
-                      data['beverageTypes'][index].name,
+                      data['beverageTypes'][index].name.toUpperCase(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                 ),

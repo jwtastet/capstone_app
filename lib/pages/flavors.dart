@@ -42,7 +42,7 @@ class _FlavorState extends State<Flavor> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: Text("Select a taste"),
+        title: Text("What flavor would you like?"),
         centerTitle: true,
         elevation: 1,
       ),
@@ -52,6 +52,7 @@ class _FlavorState extends State<Flavor> {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
+                color: Colors.lightBlueAccent,
                 child: ListTile(
                   onTap: () {
                     setState(() {
@@ -63,7 +64,12 @@ class _FlavorState extends State<Flavor> {
                   },
                   title: Center(
                     child: Text(
-                      flavorSelections[index].name,
+                      flavorSelections[index].name.toUpperCase(),
+                      style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      ),
                     ),
                   ),
                 ),

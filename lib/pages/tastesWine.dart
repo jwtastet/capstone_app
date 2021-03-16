@@ -36,6 +36,7 @@ class _TasteWineState extends State<TasteWine> {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
+                color: Colors.lightBlueAccent,
                 child: ListTile(
                   onTap: () {
                     setState(() {
@@ -47,7 +48,12 @@ class _TasteWineState extends State<TasteWine> {
                   },
                   title: Center(
                     child: Text(
-                      wineTastes[index].name,
+                      wineTastes[index].name.toUpperCase(),
+                      style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      ),
                     ),
                   ),
                 ),

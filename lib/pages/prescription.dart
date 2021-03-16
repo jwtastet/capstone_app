@@ -44,7 +44,7 @@ class _PrescriptionState extends State<Prescription> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: Text("You should try this!"),
+        title: Text("It's 5 o'clock somewhere!"),
         centerTitle: true,
         elevation: 1,
       ),
@@ -97,6 +97,12 @@ class _PrescriptionState extends State<Prescription> {
                           fontSize: 16.0,
                         ),
                       ),
+                    ),
+                    const Divider(
+                      height: 20,
+                      thickness: 5,
+                      indent: 20,
+                      endIndent: 20,
                     ),
                     SingleChildScrollView(
                       child: Text(

@@ -38,6 +38,7 @@ class _TasteNaState extends State<TasteNa> {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
+                color: Colors.lightBlueAccent,
                 child: ListTile(
                   onTap: () {
                     setState(() {
@@ -49,7 +50,12 @@ class _TasteNaState extends State<TasteNa> {
                   },
                   title: Center(
                     child: Text(
-                      naTastes[index].name,
+                      naTastes[index].name.toUpperCase(),
+                      style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      ),
                     ),
                   ),
                 ),
