@@ -10,6 +10,7 @@ import 'package:capstone_app/pages/tastesNa.dart';
 import 'package:capstone_app/pages/tastesAgain.dart';
 import 'package:capstone_app/pages/flavors.dart';
 import 'package:capstone_app/pages/prescription.dart';
+import 'package:capstone_app/pages/spinTheWheel.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -26,6 +27,7 @@ void main() {
         '/tastesAgain': (context) => TasteAgain(),
         '/flavors': (context) => Flavor(),
         '/prescription': (context) => Prescription(),
+        '/spinTheWheel': (context) => SpinTheWheel(),
 
 
       }

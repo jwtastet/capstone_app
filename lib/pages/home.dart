@@ -68,8 +68,8 @@ class _HomeState extends State<Home> {
                 height: 75,
                 child: ElevatedButton(
                   onPressed: () {
-                    print('lets get started, JT 316');
-                    Navigator.pushNamed(context, '/beverageTypes', arguments: data);
+                    print('SPIN THE WHEEL!, JT 316');
+                    Navigator.pushNamed(context, '/spinTheWheel', arguments: data);
                   },
                   child: Text('Spin the Wheel!',
                     style: TextStyle(
