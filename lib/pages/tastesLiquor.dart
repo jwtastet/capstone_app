@@ -33,6 +33,7 @@ class _TasteLiquorState extends State<TasteLiquor> {
       ),
     ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
           title: Text("How do you want it to taste?"),

@@ -28,6 +28,7 @@ class _MoodState extends State<Mood> {
         ),
       ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
           title: Text("What kind of mood are you in?"),

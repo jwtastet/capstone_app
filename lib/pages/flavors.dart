@@ -47,6 +47,7 @@ class _FlavorState extends State<Flavor> {
       ),
     ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
           title: Text("What flavor would you like?"),

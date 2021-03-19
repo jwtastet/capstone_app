@@ -33,6 +33,7 @@ class _TasteAgainState extends State<TasteAgain> {
      ),
     ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
           title: Text("Select a taste"),
