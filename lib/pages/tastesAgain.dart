@@ -25,44 +25,52 @@ class _TasteAgainState extends State<TasteAgain> {
     }
     print(data);
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent,
-        title: Text("Select a taste"),
-        centerTitle: true,
-        elevation: 1,
-      ),
-      body: ListView.builder(
-          itemCount: liquorTastes.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-              child: Card(
-                color: Colors.lightBlueAccent,
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      data['selectedIds']['tasteAgainId'] = liquorTastes[index].id;
-                    });
-                    print('from tastesAgain to flavors, JT 316');
-                    print(data);
-                    Navigator.pushNamed(context, '/flavors', arguments: data );
-                  },
-                  title: Center(
-                    child: Text(
-                      liquorTastes[index].name.toUpperCase(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/images/backgroung_lemon.jpeg"),
+        fit: BoxFit.cover,
+     ),
+    ),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlueAccent,
+          title: Text("Select a taste"),
+          centerTitle: true,
+          elevation: 1,
+        ),
+        body: ListView.builder(
+            itemCount: liquorTastes.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    onTap: () {
+                      setState(() {
+                        data['selectedIds']['tasteAgainId'] = liquorTastes[index].id;
+                      });
+                      print('from tastesAgain to flavors, JT 316');
+                      print(data);
+                      Navigator.pushNamed(context, '/flavors', arguments: data );
+                    },
+                    title: Center(
+                      child: Text(
+                        liquorTastes[index].name.toUpperCase(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }
-      ),
+              );
+            }
+        ),
+        )
     );
   }
 }

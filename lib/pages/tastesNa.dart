@@ -25,44 +25,52 @@ class _TasteNaState extends State<TasteNa> {
     }
     print(data);
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent,
-        title: Text("How do you want it to taste?"),
-        centerTitle: true,
-        elevation: 1,
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/images/backgroung_lemon.jpeg"),
+        fit: BoxFit.cover,
       ),
-      body: ListView.builder(
-          itemCount: naTastes.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-              child: Card(
-                color: Colors.lightBlueAccent,
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      data['selectedIds']['tasteId'] = naTastes[index].id;
-                    });
-                    print('from tastesNa to flavors, JT 316');
-                    print(data);
-                    Navigator.pushNamed(context, '/flavors', arguments: data );
-                  },
-                  title: Center(
-                    child: Text(
-                      naTastes[index].name.toUpperCase(),
-                      style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+    ),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlueAccent,
+          title: Text("How do you want it to taste?"),
+          centerTitle: true,
+          elevation: 1,
+        ),
+        body: ListView.builder(
+            itemCount: naTastes.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    onTap: () {
+                      setState(() {
+                        data['selectedIds']['tasteId'] = naTastes[index].id;
+                      });
+                      print('from tastesNa to flavors, JT 316');
+                      print(data);
+                      Navigator.pushNamed(context, '/flavors', arguments: data );
+                    },
+                    title: Center(
+                      child: Text(
+                        naTastes[index].name.toUpperCase(),
+                        style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }
-      ),
+              );
+            }
+        ),
+      )
     );
   }
 }

@@ -25,44 +25,52 @@ class _TasteBeerState extends State<TasteBeer> {
     }
     print(data);
 
-    return Scaffold(
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/images/backgroung_lemon.jpeg"),
+        fit: BoxFit.cover,
+        ),
+      ),
+      child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
           title: Text("How do you want it to taste?"),
           centerTitle: true,
           elevation: 1,
         ),
-      body: ListView.builder(
-          itemCount: beerTastes.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-              child: Card(
-                color: Colors.lightBlueAccent,
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      data['selectedIds']['tasteId'] = beerTastes[index].id;
-                    });
-                    print('from moods to tastes, JT 316');
-                    print(data);
-                    Navigator.pushNamed(context, '/flavors', arguments: data );
-                  },
-                  title: Center(
-                    child: Text(
-                      beerTastes[index].name.toUpperCase(),
-                      style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+        body: ListView.builder(
+            itemCount: beerTastes.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    onTap: () {
+                      setState(() {
+                        data['selectedIds']['tasteId'] = beerTastes[index].id;
+                      });
+                      print('from moods to tastes, JT 316');
+                      print(data);
+                      Navigator.pushNamed(context, '/flavors', arguments: data );
+                    },
+                    title: Center(
+                      child: Text(
+                        beerTastes[index].name.toUpperCase(),
+                        style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }
-      ),
+              );
+            }
+        ),
+      )
     );
   }
 }

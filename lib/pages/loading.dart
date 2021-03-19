@@ -120,7 +120,7 @@ class _LoadingState extends State<Loading> {
       return;
     }
     print("We made it");
-    Navigator.pushNamed(context, '/home', arguments: {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes, "tasteFlavors": tasteFlavors, "flavors": flavors, "beverages": beverages});
+    Navigator.pushReplacementNamed(context, '/home', arguments: {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes, "tasteFlavors": tasteFlavors, "flavors": flavors, "beverages": beverages});
   }
 
 
@@ -140,6 +140,52 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
+        body: new InkWell(
+          child: new Stack(
+              fit: StackFit.expand,
+              children: <Widget>[
+                new Container(
+                decoration: BoxDecoration(color: Colors.black),
+                ),
+                new Container(
+                  child: Image.asset('assets/images/background_image.jpeg', fit: BoxFit.cover),
+                ),
+                new Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                new Expanded(
+                  flex: 3,
+                  child: new Container(
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        new Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                        ),
+                       ],
+                      ) ),
+                     ),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        CircularProgressIndicator(
+                          valueColor: new AlwaysStoppedAnimation<Color>(
+                            Colors.lightBlueAccent),
+                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          )
+                          ],
+                          ),
+                        ),
+                  ],
+                ),
+              ],
+            ),
+        ),
     );
   }
 }

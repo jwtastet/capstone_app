@@ -30,6 +30,16 @@ class _PrescriptionState extends State<Prescription> {
 
         }
       }
+      if(data['selectedIds']['beverageTypeId'] == 1) {
+        beverageId = 5;
+        print("beverage id is: $beverageId");
+      }
+      if(data['selectedIds']['beverageTypeId'] == 3) {
+        if(data['tables']['prescriptions'][i].moodId == data['selectedIds']['moodId'] && data['tables']['prescriptions'][i].taste1Id == data['selectedIds']['tasteId'] && data['tables']['prescriptions'][i].flavorId == data['selectedIds']['flavorId']) {
+          print("beverage id is: $beverageId");
+          beverageId = data['tables']['prescriptions'][i].beverageId;
+        }
+      }
       i++;
     }
     i = 0;
