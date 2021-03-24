@@ -20,7 +20,7 @@ class _SpinTheWheelState extends State<SpinTheWheel> {
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
-    theChoice = (data['beverages'].toList()..shuffle()).first;
+    theChoice = (data['tables']['beverages'].toList()..shuffle()).first;
 
     return Scaffold(
       appBar: AppBar(
@@ -96,7 +96,7 @@ class _SpinTheWheelState extends State<SpinTheWheel> {
                       ),
                     ),
                     OutlinedButton.icon(
-                        onPressed: () => Navigator.pushNamed(context, '/'),
+                        onPressed: () => Navigator.pushReplacementNamed(context, '/nav', arguments: data),
                         icon: Icon( Icons.home, color: Colors.lightBlueAccent),
                         label: Text('Back To Home',
                           style: TextStyle(

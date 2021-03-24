@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:capstone_app/classes/TasteFlavor.dart';
 import 'package:capstone_app/classes/Beverage.dart';
 
-class Prescription extends StatefulWidget {
+class ShowSavedBeverage extends StatefulWidget {
   @override
-  _PrescriptionState createState() => _PrescriptionState();
+  _ShowSavedBeverageState createState() => _ShowSavedBeverageState();
 }
-class _PrescriptionState extends State<Prescription> {
+class _ShowSavedBeverageState extends State<ShowSavedBeverage> {
 
   Map data;
   int beverageId = 0;
@@ -22,27 +22,7 @@ class _PrescriptionState extends State<Prescription> {
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
     int i = 0;
-    while (i < data['tables']['prescriptions'].length) {
-      if(data['selectedIds']['beverageTypeId'] == 2) {
-        if(data['tables']['prescriptions'][i].moodId == data['selectedIds']['moodId'] && data['tables']['prescriptions'][i].taste1Id == data['selectedIds']['tasteId'] && data['tables']['prescriptions'][i].taste2Id == data['selectedIds']['tasteAgainId'] && data['tables']['prescriptions'][i].flavorId == data['selectedIds']['flavorId']) {
-          beverageId = data['tables']['prescriptions'][i].beverageId;
-          print("beverage id is: $beverageId");
-
-        }
-      }
-      if(data['selectedIds']['beverageTypeId'] == 1) {
-        beverageId = 5;
-        print("beverage id is: $beverageId");
-      }
-      if(data['selectedIds']['beverageTypeId'] == 3) {
-        if(data['tables']['prescriptions'][i].moodId == data['selectedIds']['moodId'] && data['tables']['prescriptions'][i].taste1Id == data['selectedIds']['tasteId'] && data['tables']['prescriptions'][i].flavorId == data['selectedIds']['flavorId']) {
-          print("beverage id is: $beverageId");
-          beverageId = data['tables']['prescriptions'][i].beverageId;
-        }
-      }
-      i++;
-    }
-    i = 0;
+    beverageId = data['selectedIds']['savedBeverageId'];
     while (i < data['tables']['beverages'].length) {
       if(data['tables']['beverages'][i].id == beverageId) {
         theChoice = data['tables']['beverages'][i];
@@ -125,18 +105,11 @@ class _PrescriptionState extends State<Prescription> {
                       ),
                     ),
                     OutlinedButton.icon(
-                        icon: Icon( Icons.save, color: Colors.lightBlueAccent),
-                        label: Text('Save Beverage',
+                        onPressed: () => Navigator.pushReplacementNamed(context, '/profile', arguments: data),
+                        icon: Icon( Icons.home, color: Colors.lightBlueAccent),
+                        label: Text('Back To Profile',
                           style: TextStyle(
                               color: Colors.lightBlueAccent
-                          ),
-                        )),
-                    OutlinedButton.icon(
-                        onPressed: () => Navigator.pushReplacementNamed(context, '/nav', arguments: data),
-                        icon: Icon( Icons.home, color: Colors.lightBlueAccent),
-                        label: Text('Back To Home',
-                          style: TextStyle(
-                            color: Colors.lightBlueAccent
                           ),
                         )),
                   ],

@@ -9,6 +9,7 @@ import 'package:capstone_app/classes/Taste.dart';
 import 'package:capstone_app/classes/Flavor.dart';
 import 'package:capstone_app/classes/TasteFlavor.dart';
 
+
 class Loading extends StatefulWidget {
   @override
   _LoadingState createState() => _LoadingState();
@@ -120,7 +121,7 @@ class _LoadingState extends State<Loading> {
       return;
     }
     print("We made it");
-    Navigator.pushReplacementNamed(context, '/home', arguments: {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes, "tasteFlavors": tasteFlavors, "flavors": flavors, "beverages": beverages});
+    Navigator.pushReplacementNamed(context, '/nav', arguments: {"tables": {"moods": moods, "beverageTypes": beverageTypes, "prescriptions": prescriptions, "tastes": tastes, "tasteFlavors": tasteFlavors, "flavors": flavors, "beverages": beverages}, "selectedIds": {}, "isLoggedIn": false, "userId": 1});
   }
 
 

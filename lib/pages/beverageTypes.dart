@@ -10,7 +10,6 @@ class BeverageType extends StatefulWidget {
 class _BeverageTypeState extends State<BeverageType> {
 
   Map data;
-  Map<String, int> selectedIds = {};
 
   @override
   void initState() {
@@ -40,7 +39,7 @@ class _BeverageTypeState extends State<BeverageType> {
         ),
         body: ListView.builder(
           shrinkWrap: true,
-            itemCount: data['beverageTypes'].length,
+            itemCount: data['tables']['beverageTypes'].length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
@@ -49,15 +48,15 @@ class _BeverageTypeState extends State<BeverageType> {
                   child: ListTile(
                     onTap: () {
                       setState(() {
-                        selectedIds['beverageTypeId'] = data['beverageTypes'][index].id;
+                        data['selectedIds']['beverageTypeId'] = data['tables']['beverageTypes'][index].id;
                       });
                       print('from beverageTypes to moods, JT 316');
                       print(data);
-                      Navigator.pushNamed(context, '/moods', arguments: { 'tables': data, 'selectedIds': selectedIds } );
+                      Navigator.pushNamed(context, '/moods', arguments: data );
                     },
                     title: Center(
                       child: Text(
-                        data['beverageTypes'][index].name.toUpperCase(),
+                        data['tables']['beverageTypes'][index].name.toUpperCase(),
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

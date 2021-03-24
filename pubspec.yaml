@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  page_transition: ^1.1.7+6
   http: ^0.13.0
   flutter:
     sdk: flutter

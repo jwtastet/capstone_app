@@ -1,3 +1,4 @@
+import 'package:capstone_app/pages/savedBeverages.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_app/pages/home.dart';
 import 'package:capstone_app/pages/loading.dart';
@@ -11,6 +12,11 @@ import 'package:capstone_app/pages/tastesAgain.dart';
 import 'package:capstone_app/pages/flavors.dart';
 import 'package:capstone_app/pages/prescription.dart';
 import 'package:capstone_app/pages/spinTheWheel.dart';
+import 'package:capstone_app/pages/nav.dart';
+import 'package:capstone_app/pages/profile.dart';
+import 'package:capstone_app/pages/login.dart';
+import 'package:capstone_app/pages/savedBeverages.dart';
+import 'package:capstone_app/pages/showSavedBeverage.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -28,8 +34,13 @@ void main() {
         '/flavors': (context) => Flavor(),
         '/prescription': (context) => Prescription(),
         '/spinTheWheel': (context) => SpinTheWheel(),
-
+        '/nav': (context) => Nav(),
+        '/profile': (context) => Profile(),
+        '/login': (context) => Login(),
+        '/savedBeverages': (context) => SavedBeverages(),
+        '/showSavedBeverage': (context) => ShowSavedBeverage(),
 
       }
   ));
 }
+
